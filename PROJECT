@@ -7,4 +7,10 @@ layout:
 - go.kubebuilder.io/v4
 projectName: k8s-duplicator
 repo: github.com/Nick-Triller/k8s-duplicator
+resources:
+- controller: true
+  domain: nicktriller.com
+  group: core.k8s.io
+  kind: Secret
+  version: v1
 version: "3"
