@@ -49,7 +49,7 @@ Also, implementing my own controller seemed like a fun project.
 ## Install
 
 ```bash
-helm repo add k8s-duplicator https://nicktriller.github.io/k8s-duplicator
+helm repo add k8s-duplicator https://nicktriller.github.io/k8s-duplicator/
 helm repo update
 helm upgrade --install -n k8s-duplicator k8s-duplicator k8s-duplicator/k8s-duplicator
 ```
