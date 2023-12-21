@@ -81,8 +81,6 @@ var _ = BeforeSuite(func() {
 		BinaryAssetsDirectory: filepath.Join("..", "..", "bin", "k8s",
 			fmt.Sprintf("1.28.0-%s-%s", runtime.GOOS, runtime.GOARCH)),
 	}
-	tru := true
-	testEnv.UseExistingCluster = &tru
 
 	var err error
 	// cfg is defined in this file globally.

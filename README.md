@@ -53,3 +53,12 @@ helm repo add k8s-duplicator https://nicktriller.github.io/k8s-duplicator/
 helm repo update
 helm upgrade --install -n k8s-duplicator k8s-duplicator k8s-duplicator/k8s-duplicator
 ```
+
+## Release process
+
+Push a git tag in the form of `docker-1.0.0` on `main` branch to execute unit and integration
+tests and publish a docker image to https://hub.docker.com/r/nicktriller/k8s-duplicator.
+The docker image will be tagged with the version given in the git tag.
+
+Push a git tag in the form of `helm-1.0.0` on `main` branch to publish the helm chart.
+The chart is packaged and pushed into `gh_pages` branch with the version given in the git tag.
