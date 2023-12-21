@@ -7,18 +7,8 @@ all other namespaces and keeps them in sync.
 
 ## Motivation
 
-This controller can be used to make any secret available in all namespaces by adding an annotation to the secret:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: my-secret
-  namespace: some-namespace
-  annotations:
-    duplicator.k8s.nicktriller.com/duplicate: "true"
-stringData:
-  foo: bar
-```
+This controller can be used to sync any secret into all namespaces by adding the
+annotation `duplicator.k8s.nicktriller.com/duplicate: "true"` to the secret.
 
 My specific use case for this controller is provisioning a wildcard certificate
 with cert-manager and then making the certicate available in all namespaces as described in the
@@ -53,7 +43,40 @@ Also, implementing my own controller seemed like a fun project.
 ```bash
 helm repo add k8s-duplicator https://nicktriller.github.io/k8s-duplicator/
 helm repo update
-helm upgrade --install -n k8s-duplicator k8s-duplicator k8s-duplicator/k8s-duplicator
+helm upgrade --install -n k8s-duplicator --create-namespace k8s-duplicator k8s-duplicator/k8s-duplicator
+```
+
+## Usage
+
+Add the annotation `duplicator.k8s.nicktriller.com/duplicate: "true"` to a secret to duplicate it to all namespaces.
+The copies will be kept in sync with the original secret.
+Copies are deleted if the original secret is deleted or the `duplicate` annotation is removed from the original secret.
+Copies have the same name as the original secret.
+If a namespace already contains a secret with the same name as the original secret, the controller will not overwrite it.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+  namespace: some-namespace
+  annotations:
+    duplicator.k8s.nicktriller.com/duplicate: "true"
+stringData:
+  foo: bar
+```
+
+The copies are annotated with an annotation that references the original secret:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+  namespace: another-namespace
+  annotations:
+    duplicator.k8s.nicktriller.com/source: "some-namespace/my-secret"
+stringData:
+  foo: bar
 ```
 
 ## Release process
