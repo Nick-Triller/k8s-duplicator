@@ -81,6 +81,8 @@ var _ = BeforeSuite(func() {
 		BinaryAssetsDirectory: filepath.Join("..", "..", "bin", "k8s",
 			fmt.Sprintf("1.28.0-%s-%s", runtime.GOOS, runtime.GOARCH)),
 	}
+	tru := true
+	testEnv.UseExistingCluster = &tru
 
 	var err error
 	// cfg is defined in this file globally.
@@ -236,7 +238,9 @@ var _ = Describe("Secret controller", func() {
 				},
 			}
 			err := k8sClient.Create(ctx, newNamespace)
-			Expect(err).NotTo(HaveOccurred())
+			if err != nil && !k8sErrors.IsAlreadyExists(err) {
+				Expect(err).NotTo(HaveOccurred())
+			}
 			Eventually(assertDuplicatesExistAndMatchSourceSecrets(ctx, sourceSecrets)).Should(Succeed())
 			Expect(assertUnrelatedSecretsUnchanged(ctx, unrelatedSecrets)()).To(Succeed())
 			// Keep NS as deleting namespaces is not supported,
