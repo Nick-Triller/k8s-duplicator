@@ -1,0 +1,16 @@
+{{- if .Values.serviceMonitor.create -}}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    {{- include "k8s-duplicator.labels" . | nindent 4 }}
+  name: {{ include "k8s-duplicator.fullname" . }}
+spec:
+  endpoints:
+  - path: /metrics
+    port: metrics
+    scheme: http
+  selector:
+    matchLabels:
+      {{- include "k8s-duplicator.selectorLabels" . | nindent 6 }}
+{{- end }}

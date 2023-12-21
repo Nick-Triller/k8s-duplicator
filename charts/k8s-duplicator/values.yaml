@@ -1,0 +1,57 @@
+# Default values for k8s-duplicator.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# -- Only one replica is active at any time
+replicaCount: 2
+
+image:
+  repository: docker.io/nicktriller/k8s-duplicator
+  pullPolicy: Always # IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+# -- CLI arguments that will be passed to the controller
+args:
+  - "-leader-elect=true"
+  # Random string used to make leader election lease unique.
+  - "-lease-id=7f779808"
+
+# -- serviceAccount settings
+# @default -- create serviceAccount
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# -- securityContext for pod
+podSecurityContext:
+  runAsNonRoot: true
+
+# -- securityContext for main container
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - all
+
+# -- Resource requests and limits
+# @default -- 250m-500m cpu and 256Mi memory
+resources:
+  limits:
+    cpu: 500m
+    memory: 256Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+serviceMonitor:
+  # Create ServiceMonitor Resource for Prometheus Operator
+  create: false
