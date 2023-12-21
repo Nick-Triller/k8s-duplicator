@@ -3,6 +3,8 @@ name: ci
 on:
   push:
     branches: [ "main" ]
+    tags:
+     - '*'
   pull_request:
     branches: [ "main" ]
 
@@ -28,8 +30,8 @@ jobs:
       - name: Verify tag format
         run: |
           if ! [[ ${{ github.event.ref }} =~ ^refs/tags/docker-[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            GIT_TAG=${GITHUB_REF#refs/tags/}
             echo "Git tag $GIT_TAG name is not valid. Please use the format docker-1.2.3"
+            exit 1
           fi
       - name: Checkout
         uses: actions/checkout@v4
