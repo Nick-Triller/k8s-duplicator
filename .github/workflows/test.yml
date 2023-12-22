@@ -1,4 +1,4 @@
-name: ci
+name: test
 
 on:
   # Trigger for commits to main branch
