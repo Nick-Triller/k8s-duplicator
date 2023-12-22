@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  # Trigger for commits to main branch
+  push:
+    branches: [ "main" ]
+  # Trigger for PRs that target main branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+    - name: Lint
+      run: make lint
+    - name: Test
+      run: make test
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        file: cover.out
+        github-token: ${{ secrets.GITHUB_TOKEN }}
