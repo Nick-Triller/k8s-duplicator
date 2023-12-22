@@ -1,6 +1,7 @@
 # k8s-duplicator
 
 ![Build](https://github.com/Nick-Triller/k8s-duplicator/actions/workflows/ci.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/Nick-Triller/k8s-duplicator/badge.svg?branch=main)](https://coveralls.io/github/Nick-Triller/k8s-duplicator?branch=main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Nick-Triller/k8s-duplicator)](https://goreportcard.com/report/github.com/Nick-Triller/k8s-duplicator)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
