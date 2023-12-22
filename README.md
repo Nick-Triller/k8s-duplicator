@@ -1,6 +1,7 @@
 # k8s-duplicator
 
 ![Build](https://github.com/Nick-Triller/k8s-duplicator/actions/workflows/ci.yml/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Nick-Triller/k8s-duplicator)](https://goreportcard.com/report/github.com/Nick-Triller/k8s-duplicator)
 
 k8s-duplicator is a kubernetes controller that duplicates secrets from one to
 all other namespaces and keeps them in sync.
