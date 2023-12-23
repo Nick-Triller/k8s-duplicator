@@ -3,6 +3,7 @@
 ![Test](https://github.com/Nick-Triller/k8s-duplicator/actions/workflows/test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Nick-Triller/k8s-duplicator/badge.svg?branch=main)](https://coveralls.io/github/Nick-Triller/k8s-duplicator?branch=main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Nick-Triller/k8s-duplicator)](https://goreportcard.com/report/github.com/Nick-Triller/k8s-duplicator)
+![Docker Pulls](https://img.shields.io/docker/pulls/nicktriller/k8s-duplicator)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 k8s-duplicator is a kubernetes controller that duplicates secrets from one to
@@ -42,6 +43,8 @@ but it had reliability problems - it would randomly stop reconciling secrets unt
 Also, implementing my own controller seemed like a fun project.
 
 ## Install
+
+See [chart README](./charts/k8s-duplicator/README.md) for available config options.
 
 ```bash
 helm repo add k8s-duplicator https://nicktriller.github.io/k8s-duplicator/
