@@ -11,10 +11,18 @@ jobs:
   verify-tag:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          # 'contains' check fails when in detached state
+          ref: "main"
+          fetch-tags: true
       - name: Verify tag is for commit on main branch
         run: |
-          # Verify that the tag is for a commit on the main branch
-          if git branch --contains "$(git rev-parse "$GITHUB_REF")" | grep -q 'main'; then
+          echo "GITHUB_REF is $GITHUB_REF"
+          git version
+          SHA="$(git rev-parse "$GITHUB_REF")"
+          echo "sha is $SHA"
+          if git branch --contains "$SHA" | grep -q 'main'; then
               echo "The tag is on the main branch."
           else
               echo "The tag is not on the main branch."
@@ -26,7 +34,7 @@ jobs:
     needs: verify-tag
     if: startsWith(github.ref, 'refs/tags/helm-')
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Chart version from git tag
         id: chart_version
         run: |
