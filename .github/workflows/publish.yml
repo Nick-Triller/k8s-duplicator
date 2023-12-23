@@ -42,7 +42,7 @@ jobs:
           echo "Git tag is GIT_TAG"
           CHART_VERSION=${GIT_TAG#helm-}
           echo "CHART_VERSION is $CHART_VERSION"
-          echo "::set-output name=chart_version::$CHART_VERSION"
+          echo "chart_version=$CHART_VERSION" >> $GITHUB_OUTPUT
       - name: Publish Helm charts
         uses: stefanprodan/helm-gh-pages@v1.7.0
         with:
