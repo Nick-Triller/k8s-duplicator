@@ -6,7 +6,6 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/nicktriller/k8s-duplicator)](https://hub.docker.com/r/nicktriller/k8s-duplicator)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-
 k8s-duplicator is a kubernetes controller that duplicates secrets from one to
 all other namespaces and keeps them in sync.
 
