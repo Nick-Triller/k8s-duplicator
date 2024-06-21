@@ -1,6 +1,6 @@
 module github.com/Nick-Triller/k8s-duplicator
 
-go 1.22
+go 1.22.4
 
 require (
 	github.com/onsi/ginkgo/v2 v2.17.2
