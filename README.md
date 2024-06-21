@@ -3,7 +3,7 @@
 ![Test](https://github.com/Nick-Triller/k8s-duplicator/actions/workflows/test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Nick-Triller/k8s-duplicator/badge.svg?branch=main)](https://coveralls.io/github/Nick-Triller/k8s-duplicator?branch=main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Nick-Triller/k8s-duplicator)](https://goreportcard.com/report/github.com/Nick-Triller/k8s-duplicator)
-![Docker Pulls](https://img.shields.io/docker/pulls/nicktriller/k8s-duplicator)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nicktriller/k8s-duplicator)](https://hub.docker.com/r/nicktriller/k8s-duplicator)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 k8s-duplicator is a kubernetes controller that duplicates secrets from one to
@@ -96,3 +96,6 @@ Push a git tag in the form of `helm-1.0.0` on `main` branch to publish the helm 
 The chart is packaged and pushed into `gh_pages` branch with the chart version set to the
 version given in the git tag.
 `appVersion` in `Chart.yaml` is not overwritten by CI.
+
+Make sure to update the the [helm chart changelog](./charts/k8s-duplicator/CHANGELOG.md)
+and [application changelog](./CHANGELOG.md) as appropriate.
