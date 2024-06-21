@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   k8s-duplicator:
   - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2024-06-21T22:11:48.141951887Z"
+    description: Kubernetes controller that copies secrets into other namespaces.
+    digest: e848a5d1fb97dd6636d8fc0ea3fbc876bf25eb13cc9ae89351ff51daea05e966
+    name: k8s-duplicator
+    type: application
+    urls:
+    - https://Nick-Triller.github.io/k8s-duplicator/k8s-duplicator-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2023-12-23T12:07:41.969210785Z"
     description: Kubernetes controller that copies secrets into other namespaces.
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://Nick-Triller.github.io/k8s-duplicator/k8s-duplicator-1.0.0.tgz
     version: 1.0.0
-generated: "2023-12-23T12:07:41.967904438Z"
+generated: "2024-06-21T22:11:48.141476698Z"
